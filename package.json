@@ -10,10 +10,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/polyfill": "^7.6.0",
     "vue": "^2.6.10",
     "vuex": "^3.1.1"
   },
   "devDependencies": {
+    "@babel/cli": "^7.6.4",
+    "@babel/core": "^7.6.4",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/preset-env": "^7.6.3",
     "css-loader": "^3.0.0",
     "vue-loader": "^15.7.0",
     "vue-style-loader": "^4.1.2",

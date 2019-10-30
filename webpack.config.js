@@ -1,6 +1,10 @@
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const path = require('path');
 
+function resolve (dir) {
+  return path.resolve(__dirname, dir)
+}
+
 module.exports = {
   mode: 'development',
   devtool: 'eval',
@@ -11,16 +15,31 @@ module.exports = {
     app: path.join(__dirname, 'main'),
   },
   module: {
-    rules: [{
-      test: /\.vue$/,
-      use: 'vue-loader',
-    }, {
-      test: /\.css$/,
-      use: [
-        'vue-style-loader',
-        'css-loader',
-      ]
-    }],
+    rules: [
+      {
+        test: /\.vue$/,
+        use: 'vue-loader',
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'vue-style-loader',
+          'css-loader',
+        ]
+      },
+      {
+        test: /\.js$/,
+        include: [resolve('js'), resolve('test'), resolve('node_modules/webpack-dev-server/client')],
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+            plugins: ['@babel/plugin-proposal-class-properties']
+          }
+        }
+      }
+    ],
   },
   plugins: [
     new VueLoaderPlugin(),
