@@ -29,8 +29,8 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        include: [resolve('js'), resolve('test'), resolve('node_modules/webpack-dev-server/client')],
-        exclude: /node_modules/,
+        include: [resolve('./'), resolve('node_modules/webpack-dev-server/client')],
+        exclude: /(node_modules)|(dist)/,
         use: {
           loader: 'babel-loader',
           options: {
